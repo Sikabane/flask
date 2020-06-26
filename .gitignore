@@ -1,0 +1,8 @@
+env/
+*.pyc
+__pycache__/
+.pytest_cache/
+.coverage
+*.egg-info/
+database.sqlite
+sqlite3.exe

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Group{% endblock %}
+
+{% block body %}
+<div class="container">
+<h3>Group list</h3>
+    {% for g in group %}
+    {% set owner = user.filter_by(id=g.user_id).first() %}
+    <div class="card">
+        <h5 class="card-header">Host: {{owner.username}}</h5>
+        <div class="card-body">
+            <h5 class="card-title">{{g.title}}</h5>
+            <p class="card-text">{{g.text}}</p>
+            <p class="card-text">Published: {{g.publish_date.date()}}</p>
+            <p class="card-text">Member: 
+            {% for u in g.users %}
+            {{u.username}} 
+            {% endfor %}
+            </p>
+            <a href="{{ url_for('join_group', g_id=g.id) }}" class="btn btn-primary">Join this group</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

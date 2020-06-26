@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Signup{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>Signup</h1>
+<form method="POST", action="signup">
+    {{ form.hidden_tag() }}
+    {{ wtf.form_field(form.username) }}
+    {{ wtf.form_field(form.email) }}
+    {{ wtf.form_field(form.location) }}
+    {{ wtf.form_field(form.password) }}
+    {{ wtf.form_field(form.confirm) }}
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+{% endblock %}

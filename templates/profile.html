@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% import 'bootstrap/wtf.html' as wtf %}
+
+{% block title %}Profile{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">{% endblock %}
+
+{% block body %}
+<div class="container">
+<h2>{{user.username}}'s Profile</h2>
+ 
+<ul class="list-group">
+    <li class="list-group-item">Name: {{user.username}}</li>
+    <li class="list-group-item">Email: {{user.email}}</li>
+    <li class="list-group-item">Location: {{user.location}}</li>
+    <li class="list-group-item">Joined: {{user.created.date()}}</li>
+</ul>
+</div>
+{% endblock %}
